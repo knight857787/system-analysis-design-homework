@@ -1,0 +1,31 @@
+<view class="page">
+  <view class="search-row">
+    <input class="input search" value="{{q}}" placeholder="商品名 / 条码 / 批次号" bindinput="onInput" confirm-type="search" bindconfirm="reload" />
+  </view>
+
+  <view class="card">
+    <view class="row">
+      <view class="muted">共 {{total}} 条批次 · 仅显示有库存</view>
+      <view class="spacer"></view>
+      <view class="link" bindtap="toggleOnlyStock">{{onlyStock ? '显示全部' : '仅看有货'}}</view>
+    </view>
+  </view>
+
+  <view wx:if="{{loading}}" class="card"><view class="muted">加载中…</view></view>
+  <view wx:if="{{!loading && items.length === 0}}" class="card"><view class="muted">没有查到库存记录</view></view>
+
+  <view wx:for="{{items}}" wx:key="LedgerID" class="card inv">
+    <view class="row">
+      <view class="item-name">{{item.ProductName}}</view>
+      <view class="spacer"></view>
+      <view class="qty-tag">{{item.QuantityText}} {{item.Unit}}</view>
+    </view>
+    <view class="tiny" style="margin-top: 8rpx;">
+      批次 {{item.BatchNo}} · 库位 {{item.Location || '—'}}
+    </view>
+    <view class="tiny" wx:if="{{item.ExpiryDate}}">到期 {{item.ExpiryDate}}{{item.ExpiryText}}</view>
+  </view>
+
+  <view wx:if="{{hasMore && !loading}}" class="more" bindtap="loadMore">加载更多</view>
+  <view wx:if="{{!hasMore && items.length}}" class="tiny center">已经到底了</view>
+</view>

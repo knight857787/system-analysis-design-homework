@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/register/register",
+    "pages/dashboard/dashboard",
+    "pages/pos/pos",
+    "pages/inventory/inventory",
+    "pages/products/products",
+    "pages/expiry/expiry",
+    "pages/receipts/receipts",
+    "pages/stocktake/stocktake",
+    "pages/purchases/purchases",
+    "pages/settle/settle",
+    "pages/suppliers/suppliers",
+    "pages/credit/credit",
+    "pages/members/members",
+    "pages/online/online",
+    "pages/reports/reports",
+    "pages/acceptance/acceptance",
+    "pages/system/system"
+  ],
+  "window": {
+    "navigationBarTitleText": "门店经营助手",
+    "navigationBarBackgroundColor": "#0f2e2c",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#0b1f1e",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#7c9a99",
+    "selectedColor": "#2dd4bf",
+    "backgroundColor": "#0f2e2c",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/dashboard/dashboard",
+        "text": "看板"
+      },
+      {
+        "pagePath": "pages/pos/pos",
+        "text": "收银"
+      },
+      {
+        "pagePath": "pages/inventory/inventory",
+        "text": "库存"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

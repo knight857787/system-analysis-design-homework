@@ -1,0 +1,36 @@
+<view class="page">
+  <view class="seg">
+    <view class="seg-item {{tab === 'payable' ? 'on' : ''}}" data-tab="payable" bindtap="switchTab">应付账款</view>
+    <view class="seg-item {{tab === 'statement' ? 'on' : ''}}" data-tab="statement" bindtap="switchTab">对账单</view>
+  </view>
+
+  <view wx:if="{{loading}}" class="card"><view class="muted">加载中…</view></view>
+
+  <block wx:if="{{tab === 'payable'}}">
+    <view class="card">
+      <view class="muted">待付合计 ¥{{payableSum}} · {{items.length}} 笔</view>
+    </view>
+    <view wx:for="{{items}}" wx:key="PayableID" class="card row-card">
+      <view class="row">
+        <view class="name">{{item.SupplierName}}</view>
+        <view class="spacer"></view>
+        <view class="amount">¥{{item.remainText}}</view>
+      </view>
+      <view class="tiny" style="margin-top:6rpx;">{{item.PayableNo}} · {{item.statusText}} · 计划付款 {{item.PlannedPayDate}}</view>
+    </view>
+  </block>
+
+  <block wx:else>
+    <view class="card"><view class="muted">对账单 {{items.length}} 份</view></view>
+    <view wx:for="{{items}}" wx:key="StatementID" class="card row-card">
+      <view class="row">
+        <view class="name">{{item.StatementNo}}</view>
+        <view class="spacer"></view>
+        <view class="amount">¥{{item.amountText}}</view>
+      </view>
+      <view class="tiny" style="margin-top:6rpx;">{{item.period}} · {{item.statusText}}</view>
+    </view>
+  </block>
+
+  <view wx:if="{{!loading && items.length === 0}}" class="card"><view class="muted">暂无数据</view></view>
+</view>

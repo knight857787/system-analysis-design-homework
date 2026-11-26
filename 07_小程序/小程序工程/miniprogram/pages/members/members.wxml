@@ -1,0 +1,17 @@
+<view class="page">
+  <view class="card"><view class="muted">{{items.length}} 位会员 · 30 天活跃 {{activeCount}}</view></view>
+  <view wx:if="{{loading}}" class="card"><view class="muted">加载中…</view></view>
+  <view wx:for="{{items}}" wx:key="MemberID" class="card row-card">
+    <view class="row">
+      <view class="name">{{item.Name}}</view>
+      <view class="spacer"></view>
+      <view class="tag">{{item.Level}}</view>
+    </view>
+    <view class="tiny" style="margin-top:6rpx;">{{item.Phone || '—'}} · 积分 {{item.PointsText}}</view>
+    <view class="row" style="margin-top:8rpx;">
+      <view class="tiny">近 30 天 {{item.OrdersRecent}} 单 / ¥{{item.AmountRecent}}</view>
+      <view class="spacer"></view>
+      <view class="tiny">累计 ¥{{item.AmountTotal}}</view>
+    </view>
+  </view>
+</view>

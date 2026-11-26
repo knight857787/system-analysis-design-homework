@@ -1,0 +1,4 @@
+.row-card { padding: 22rpx 24rpx; }
+.name { font-size: 28rpx; color: #eafffb; font-weight: 600; }
+.amount { color: #2dd4bf; font-size: 28rpx; }
+.tag { font-size: 22rpx; padding: 4rpx 14rpx; border-radius: 999rpx; background: rgba(45,212,191,0.16); color: #7fe8d8; }

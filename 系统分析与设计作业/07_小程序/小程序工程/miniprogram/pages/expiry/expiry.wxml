@@ -1,0 +1,35 @@
+<view class="page">
+  <view class="seg">
+    <view class="seg-item {{days === 7 ? 'on' : ''}}" data-days="7" bindtap="setDays">7 天内</view>
+    <view class="seg-item {{days === 30 ? 'on' : ''}}" data-days="30" bindtap="setDays">30 天内</view>
+    <view class="seg-item {{days === 0 ? 'on' : ''}}" data-days="0" bindtap="setDays">全部</view>
+  </view>
+
+  <view class="card">
+    <view class="row">
+      <view class="muted">共 {{items.length}} 个批次</view>
+      <view class="spacer"></view>
+      <view class="tiny">已过期 {{expiredCount}} · 临期 {{soonCount}}</view>
+    </view>
+  </view>
+
+  <view wx:if="{{loading}}" class="card"><view class="muted">加载中…</view></view>
+
+  <view wx:for="{{items}}" wx:key="BatchID" class="card item">
+    <view class="row">
+      <view class="name">{{item.ProductName}}</view>
+      <view class="spacer"></view>
+      <view class="tag {{item.warn ? 'tag-danger' : 'tag-ok'}}">{{item.daysText}}</view>
+    </view>
+    <view class="tiny" style="margin-top:8rpx;">
+      {{item.Specification}} · {{item.QuantityText}}{{item.Unit}} · 库位 {{item.Location || '—'}}
+    </view>
+    <view class="row" style="margin-top:8rpx;">
+      <view class="tiny">到期 {{item.ExpiryDate}}</view>
+      <view class="spacer"></view>
+      <view class="tiny" wx:if="{{canSeeMoney}}">库存成本 ¥{{item.valueText}}</view>
+    </view>
+  </view>
+
+  <view wx:if="{{!loading && items.length === 0}}" class="card"><view class="muted">这个时间范围内没有临期批次</view></view>
+</view>

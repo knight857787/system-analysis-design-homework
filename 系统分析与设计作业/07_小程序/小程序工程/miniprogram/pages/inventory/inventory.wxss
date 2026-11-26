@@ -1,0 +1,8 @@
+.search-row { display: flex; gap: 16rpx; margin-bottom: 24rpx; }
+.search { flex: 1; }
+.link { color: #7fe8d8; font-size: 24rpx; }
+.inv { padding: 22rpx 24rpx; }
+.item-name { font-size: 28rpx; color: #eafffb; font-weight: 600; }
+.qty-tag { font-size: 26rpx; color: #2dd4bf; }
+.more { text-align: center; color: #7fe8d8; padding: 20rpx 0; font-size: 26rpx; }
+.center { text-align: center; padding: 10rpx 0; }

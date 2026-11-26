@@ -1,0 +1,7 @@
+.seg { display: flex; gap: 12rpx; margin-bottom: 20rpx; }
+.seg-item { flex: 1; text-align: center; padding: 16rpx 0; border-radius: 14rpx; background: rgba(255,255,255,0.05); color: #8fb3b5; font-size: 26rpx; }
+.seg-item.on { background: rgba(45,212,191,0.18); color: #7fe8d8; }
+.row-card { padding: 22rpx 24rpx; }
+.name { font-size: 28rpx; color: #eafffb; font-weight: 600; }
+.amount { color: #2dd4bf; font-size: 28rpx; }
+.danger { color: #ff9b9b; }

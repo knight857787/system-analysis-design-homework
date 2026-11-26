@@ -1,0 +1,26 @@
+<view class="page">
+  <view class="card">
+    <view class="muted">待收货的订货单（{{items.length}} 张）</view>
+    <view class="tiny" style="margin-top:6rpx;">登记实收数量与进价请在网页端「收货验收」完成；这里用于现场核对</view>
+  </view>
+
+  <view wx:if="{{loading}}" class="card"><view class="muted">加载中…</view></view>
+
+  <view wx:for="{{items}}" wx:key="OrderID" class="card order">
+    <view class="row">
+      <view class="name">{{item.OrderNo}}</view>
+      <view class="spacer"></view>
+      <view class="amount">¥{{item.amountText}}</view>
+    </view>
+    <view class="tiny" style="margin-top:6rpx;">{{item.SupplierName}} · 预计到货 {{item.ExpectedArrivalDate || '—'}}</view>
+    <view class="lines">
+      <view wx:for="{{item.lines}}" wx:for-item="ln" wx:key="index" class="line">
+        <view class="line-name">{{ln.ProductName}}</view>
+        <view class="spacer"></view>
+        <view class="tiny">{{ln.Quantity}}{{ln.Unit}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{!loading && items.length === 0}}" class="card"><view class="muted">没有待收货的订货单</view></view>
+</view>

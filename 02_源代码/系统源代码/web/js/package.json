@@ -1,0 +1,5 @@
+{
+  "type": "module",
+  "private": true,
+  "note": "仅用于让 Node 以 ESM 方式加载前端模块做静态检查；浏览器按 <script type=module> 加载，与本文件无关。"
+}

@@ -1,0 +1,5 @@
+.row-card { padding: 22rpx 24rpx; }
+.name { font-size: 28rpx; color: #eafffb; font-weight: 600; }
+.tag { font-size: 22rpx; padding: 4rpx 14rpx; border-radius: 999rpx; }
+.tag.ok { background: rgba(45,212,191,0.18); color: #7fe8d8; }
+.tag.bad { background: rgba(248,113,113,0.18); color: #ffb4b4; }

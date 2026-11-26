@@ -1,0 +1,44 @@
+<view class="wrap">
+  <view class="brand">
+    <view class="logo">洋</view>
+    <view>
+      <view class="brand-name">门店经营助手</view>
+      <view class="brand-sub">STORE OPERATIONS</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="welcome">凭邀请码注册</view>
+    <view class="muted">邀请码由老板在网页端「系统说明 → 邀请码」生成，角色由邀请码决定</view>
+
+    <view wx:if="{{error}}" class="alert-danger">{{error}}</view>
+
+    <view class="field">
+      <view class="field-label">邀请码</view>
+      <input class="input" value="{{inviteCode}}" placeholder="如 AB3D7K9M" bindinput="onInvite" />
+    </view>
+    <view class="field">
+      <view class="field-label">登录名</view>
+      <input class="input" value="{{loginName}}" placeholder="字母开头，3–32 位" bindinput="onLoginName" />
+    </view>
+    <view class="field">
+      <view class="field-label">姓名</view>
+      <input class="input" value="{{name}}" placeholder="真实姓名" bindinput="onName" />
+    </view>
+    <view class="field">
+      <view class="field-label">手机号（选填）</view>
+      <input class="input" value="{{phone}}" type="number" placeholder="选填" bindinput="onPhone" />
+    </view>
+    <view class="field">
+      <view class="field-label">设置密码</view>
+      <input class="input" password value="{{password}}" placeholder="至少 8 位" bindinput="onPassword" />
+    </view>
+    <view class="field">
+      <view class="field-label">确认密码</view>
+      <input class="input" password value="{{password2}}" placeholder="再输入一次" bindinput="onPassword2" />
+    </view>
+
+    <view class="btn-primary {{loading ? 'disabled' : ''}}" bindtap="submit">{{loading ? '正在注册…' : '注册并登录'}}</view>
+    <view class="net-test" bindtap="back">返回登录</view>
+  </view>
+</view>

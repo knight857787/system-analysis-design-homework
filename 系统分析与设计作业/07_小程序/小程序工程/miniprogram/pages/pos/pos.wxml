@@ -1,0 +1,54 @@
+<view class="page">
+  <view class="search-row">
+    <input class="input search" value="{{q}}" placeholder="搜索商品名或条码" bindinput="onInput" confirm-type="search" bindconfirm="onSearch" />
+    <view class="scan-btn" bindtap="scan">扫码</view>
+  </view>
+
+  <view class="card" wx:if="{{results.length}}">
+    <view class="card-title">商品</view>
+    <view wx:for="{{results}}" wx:key="ProductID" class="item" data-item="{{item}}" bindtap="add">
+      <view class="item-main">
+        <view class="item-name">{{item.ProductName}}</view>
+        <view class="tiny">{{item.Specification || ''}} · {{item.Barcode || '无条码'}} · 可售 {{item.SellableQty}}{{item.Unit}}</view>
+      </view>
+      <view class="item-right">
+        <view class="price">¥{{item.ListPrice}}</view>
+        <view class="add">＋</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">购物车（{{cart.length}}）</view>
+    <view wx:if="{{cart.length === 0}}" class="muted">扫码或搜索后点击商品加入</view>
+    <view wx:for="{{cart}}" wx:key="productId" class="cart-row">
+      <view class="item-main">
+        <view class="item-name">{{item.name}}</view>
+        <view class="tiny">¥{{item.priceText}} / {{item.unit}}</view>
+      </view>
+      <view class="qty">
+        <view class="qty-btn" data-index="{{index}}" data-delta="-1" bindtap="changeQty">－</view>
+        <text class="qty-num">{{item.qtyText}}</text>
+        <view class="qty-btn" data-index="{{index}}" data-delta="1" bindtap="changeQty">＋</view>
+      </view>
+      <view class="amount">¥{{item.amountText}}</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="row">
+      <view class="muted">折扣金额</view>
+      <input class="input discount" type="digit" value="{{discount}}" placeholder="0" bindinput="onDiscount" />
+    </view>
+    <view class="row total-row">
+      <view class="muted">合计</view>
+      <view class="total">¥{{netText}}</view>
+    </view>
+    <view wx:if="{{canCheckout}}" class="btn-primary {{cart.length === 0 || submitting ? 'disabled' : ''}}" bindtap="checkout">
+      {{submitting ? '正在结算…' : '结算'}}
+    </view>
+    <view wx:else class="release-note">
+      正式版定位为门店经营管理工具：仅展示演示数据，不提供真实结算动作。
+    </view>
+  </view>
+</view>

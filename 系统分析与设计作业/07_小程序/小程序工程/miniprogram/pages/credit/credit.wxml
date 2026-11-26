@@ -1,0 +1,19 @@
+<view class="page">
+  <view class="seg">
+    <view class="seg-item {{tab === 'account' ? 'on' : ''}}" data-tab="account" bindtap="switchTab">账户余额</view>
+    <view class="seg-item {{tab === 'dunning' ? 'on' : ''}}" data-tab="dunning" bindtap="switchTab">催收清单</view>
+  </view>
+
+  <view wx:if="{{loading}}" class="card"><view class="muted">加载中…</view></view>
+
+  <view wx:for="{{items}}" wx:key="key" class="card row-card">
+    <view class="row">
+      <view class="name">{{item.title}}</view>
+      <view class="spacer"></view>
+      <view class="amount {{item.overdue ? 'danger' : ''}}">¥{{item.amountText}}</view>
+    </view>
+    <view class="tiny" style="margin-top:6rpx;">{{item.sub}}</view>
+  </view>
+
+  <view wx:if="{{!loading && items.length === 0}}" class="card"><view class="muted">暂无数据</view></view>
+</view>

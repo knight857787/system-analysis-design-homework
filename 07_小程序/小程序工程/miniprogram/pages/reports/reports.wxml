@@ -1,0 +1,32 @@
+<view class="page">
+  <view class="card">
+    <view class="card-title">近 30 天</view>
+    <view class="kpi-row">
+      <view class="kpi"><view class="kpi-label">销售额</view><view class="kpi-value">{{sales.amountText}}</view><view class="kpi-sub">{{sales.orders}} 单</view></view>
+      <view class="kpi"><view class="kpi-label">毛利</view><view class="kpi-value">{{sales.profitText}}</view><view class="kpi-sub">毛利率 {{sales.marginText}}</view></view>
+    </view>
+    <view class="kpi-row" style="margin-top:18rpx;">
+      <view class="kpi"><view class="kpi-label">客单价</view><view class="kpi-value">{{sales.avgText}}</view></view>
+      <view class="kpi"><view class="kpi-label">日均</view><view class="kpi-value">{{sales.dailyText}}</view></view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">品类结构</view>
+    <view wx:for="{{categories}}" wx:key="name" class="bar-row">
+      <view class="bar-label">{{item.name}}</view>
+      <view class="bar-track"><view class="bar-fill" style="width:{{item.pctText}}%"></view></view>
+      <view class="bar-value">¥{{item.amountText}}</view>
+    </view>
+    <view wx:if="{{categories.length === 0}}" class="muted">暂无数据</view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">畅销商品</view>
+    <view wx:for="{{tops}}" wx:key="name" class="top-row">
+      <view class="top-name">{{index + 1}}. {{item.name}}</view>
+      <view class="spacer"></view>
+      <view class="tiny">{{item.qtyText}} · ¥{{item.amountText}}</view>
+    </view>
+  </view>
+</view>

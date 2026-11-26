@@ -1,0 +1,31 @@
+<view class="page">
+  <view class="search-row">
+    <input class="input search" value="{{q}}" placeholder="商品名 / 条码 / 规格" bindinput="onInput" confirm-type="search" bindconfirm="reload" />
+  </view>
+
+  <view class="card">
+    <view class="row">
+      <view class="muted">共 {{total}} 个商品</view>
+      <view class="spacer"></view>
+      <view class="link" bindtap="toggleShelf">{{onShelf === 'Y' ? '仅上架' : '全部'}}</view>
+    </view>
+  </view>
+
+  <view wx:if="{{loading}}" class="card"><view class="muted">加载中…</view></view>
+
+  <view wx:for="{{items}}" wx:key="ProductID" class="card prod">
+    <view class="row">
+      <view class="item-name">{{item.ProductName}}</view>
+      <view class="spacer"></view>
+      <view class="price">¥{{item.ListPriceText}}</view>
+    </view>
+    <view class="tiny">{{item.CategoryName || ''}} · {{item.Specification || '—'}} · {{item.Unit}}</view>
+    <view class="row" style="margin-top: 10rpx;">
+      <view class="tiny">库存 {{item.StockQtyText}} {{item.Unit}}</view>
+      <view class="spacer"></view>
+      <view class="shelf {{item.OnShelfFlag === 'Y' ? 'on' : 'off'}}">{{item.OnShelfFlag === 'Y' ? '在售' : '下架'}}</view>
+    </view>
+  </view>
+
+  <view wx:if="{{hasMore && !loading}}" class="more" bindtap="loadMore">加载更多</view>
+</view>

@@ -1,0 +1,47 @@
+<view class="wrap">
+  <view class="brand">
+    <view class="logo">洋</view>
+    <view>
+      <view class="brand-name">门店经营助手</view>
+      <view class="brand-sub">STORE OPERATIONS</view>
+    </view>
+  </view>
+
+  <view class="clock">{{timeText}}</view>
+  <view class="date">{{dateText}}</view>
+
+  <view class="card">
+    <view class="welcome">欢迎回来</view>
+    <view class="muted">登录后进入门店经营工作台</view>
+
+    <view wx:if="{{error}}" class="alert-danger">{{error}}</view>
+    <view wx:if="{{netTip}}" class="alert-warn">{{netTip}}</view>
+
+    <view class="field">
+      <view class="field-label">登录名</view>
+      <input class="input" value="{{loginName}}" placeholder="如 boss" bindinput="onLoginName" />
+    </view>
+    <view class="field">
+      <view class="field-label">密码</view>
+      <input class="input" password value="{{password}}" placeholder="请输入密码" bindinput="onPassword" />
+    </view>
+
+    <view class="btn-primary {{loading ? 'disabled' : ''}}" bindtap="submit">{{loading ? '正在登录…' : '进入工作台'}}</view>
+
+    <view class="net-test" bindtap="testConn">网络诊断（检查域名连通性）</view>
+    <view class="net-test" bindtap="goRegister">没有账号？凭邀请码注册 →</view>
+
+    <view class="demo">
+      <view class="tiny">演示账号（点一下自动填入）· 口令统一 YlfDemo2026</view>
+      <view class="tiny" style="margin-top:6rpx;">理货员 / 销售 / 供货商账号：点下方“凭邀请码注册”，邀请码由老板生成</view>
+      <view class="demo-list">
+        <view wx:for="{{demoAccounts}}" wx:key="loginName" class="demo-item" data-name="{{item.loginName}}" bindtap="pickAccount">
+          <text class="demo-role">{{item.roleLabel}}</text>
+          <text class="tiny">{{item.loginName}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="foot tiny">© 2026 门店经营助手 · 课程作业演示版</view>
+</view>

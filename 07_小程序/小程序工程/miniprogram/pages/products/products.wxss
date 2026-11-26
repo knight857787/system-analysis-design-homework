@@ -1,0 +1,10 @@
+.search-row { display: flex; gap: 16rpx; margin-bottom: 24rpx; }
+.search { flex: 1; }
+.link { color: #7fe8d8; font-size: 24rpx; }
+.prod { padding: 22rpx 24rpx; }
+.item-name { font-size: 28rpx; color: #eafffb; font-weight: 600; }
+.price { color: #2dd4bf; font-size: 28rpx; }
+.shelf { font-size: 22rpx; padding: 4rpx 14rpx; border-radius: 999rpx; }
+.shelf.on { background: rgba(45,212,191,0.16); color: #7fe8d8; }
+.shelf.off { background: rgba(255,255,255,0.08); color: #8fb3b5; }
+.more { text-align: center; color: #7fe8d8; padding: 20rpx 0; font-size: 26rpx; }

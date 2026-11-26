@@ -1,0 +1,24 @@
+<view class="page">
+  <view class="card">
+    <view class="muted">盘点计划（{{items.length}} 个）</view>
+    <view class="tiny" style="margin-top:6rpx;">实盘录入与差异调账请在网页端完成；这里用于现场查计划与进度</view>
+  </view>
+
+  <view wx:if="{{loading}}" class="card"><view class="muted">加载中…</view></view>
+
+  <view wx:for="{{items}}" wx:key="PlanID" class="card plan">
+    <view class="row">
+      <view class="name">{{item.PlanNo}}</view>
+      <view class="spacer"></view>
+      <view class="status">{{item.statusText}}</view>
+    </view>
+    <view class="tiny" style="margin-top:6rpx;">范围 {{item.Scope}} · {{item.LineCount}} 个批次 · 计划 {{item.PlannedAt}}</view>
+    <view class="row" style="margin-top:10rpx;">
+      <view class="tiny">差异 {{item.diffText}}</view>
+      <view class="spacer"></view>
+      <view class="tiny">差异率 {{item.rateText}}</view>
+    </view>
+  </view>
+
+  <view wx:if="{{!loading && items.length === 0}}" class="card"><view class="muted">还没有盘点计划</view></view>
+</view>

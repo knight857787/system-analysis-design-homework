@@ -1,0 +1,32 @@
+<view class="page">
+  <view class="card">
+    <view class="card-title">{{info.store.name}}</view>
+    <view class="tiny">{{info.store.system}} · v{{info.version}}</view>
+    <view class="tiny" style="margin-top:6rpx;">{{info.store.address}}</view>
+    <view class="tiny">当前账号：{{user.name}} · {{user.roleLabel}}</view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">技术实现</view>
+    <view class="tiny">后端：{{info.tech.backend}}</view>
+    <view class="tiny" style="margin-top:6rpx;">数据库：{{info.tech.database}}</view>
+    <view class="tiny" style="margin-top:6rpx;">前端：{{info.tech.frontend || '原生 ES Modules（网页端） + 微信小程序原生'}}</view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">用例与数据表</view>
+    <view class="tiny">系统用例 {{useCaseCount}} 个 · 数据表 {{tableCount}} 张</view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">权限矩阵</view>
+    <view wx:for="{{matrix}}" wx:key="index" class="tiny" style="margin-bottom:6rpx;">
+      {{item[0]}}｜老板：{{item[1]}}｜理货员：{{item[2]}}｜销售：{{item[3]}}
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">关于本小程序</view>
+    <view class="tiny">本小程序是网页端的并行客户端，共用同一后端与权限模型；正式版定位为门店经营管理工具，不提供真实结算动作。</view>
+  </view>
+</view>

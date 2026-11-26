@@ -1,0 +1,17 @@
+<view class="page">
+  <view class="card"><view class="muted">{{items.length}} 家供应商</view></view>
+  <view wx:if="{{loading}}" class="card"><view class="muted">加载中…</view></view>
+  <view wx:for="{{items}}" wx:key="SupplierID" class="card row-card">
+    <view class="row">
+      <view class="name">{{item.Name}}</view>
+      <view class="spacer"></view>
+      <view class="tag">{{item.termText}}</view>
+    </view>
+    <view class="tiny" style="margin-top:6rpx;">{{item.Contact || '—'}} · {{item.Phone || '—'}}</view>
+    <view class="row" style="margin-top:8rpx;">
+      <view class="tiny">在供商品 {{item.ProductCount}}</view>
+      <view class="spacer"></view>
+      <view class="tiny">未结应付 ¥{{item.payableText}}</view>
+    </view>
+  </view>
+</view>

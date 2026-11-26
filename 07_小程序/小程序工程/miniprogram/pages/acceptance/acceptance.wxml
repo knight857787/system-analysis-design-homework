@@ -1,0 +1,16 @@
+<view class="page">
+  <view class="card">
+    <view class="muted">对照报告表 22 的基线 / 目标 / 当前（{{okCount}}/{{total}} 达标）</view>
+  </view>
+  <view wx:if="{{loading}}" class="card"><view class="muted">加载中…</view></view>
+  <view wx:for="{{items}}" wx:key="key" class="card row-card">
+    <view class="row">
+      <view class="name">{{item.metric}}</view>
+      <view class="spacer"></view>
+      <view class="tag {{item.ok ? 'ok' : 'bad'}}">{{item.ok ? '达标' : '未达标'}}</view>
+    </view>
+    <view class="tiny" style="margin-top:8rpx;">基线：{{item.baseline}}</view>
+    <view class="tiny">目标：{{item.target}}</view>
+    <view class="tiny" style="color:#7fe8d8;">当前：{{item.current}}</view>
+  </view>
+</view>
